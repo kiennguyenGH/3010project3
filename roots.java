@@ -146,13 +146,68 @@ public class roots
             cn = c;
         }
     }
+
+    public static void newtonRaphFunc1(double x)
+    {
+        //2x^3 - 11.7x^2 + 17.7x - 5
+        //6x^2 - 23.4x + 17.7
+        double xn = x;
+        double fxn = 0;
+        double fxpn = 0;
+        double d = 0;
+        double error = 0;
+        for (int i = 0; i < 100; i++)
+        {
+            fxn = (2*Math.pow(xn, 3)) - (11.7*Math.pow(xn,2)) + (17.7 * xn) - 5;
+            fxpn = (6*Math.pow(xn,2)) - (23.4 * xn) + 17.7;
+            d = fxn/fxpn;
+            error = Math.abs(d);
+            System.out.println("n\txn\tf(xn)\tf'(xn)\td\txn+1\terr.");
+            System.out.println(i + "\t" + xn + "\t" + fxn + "\t" + fxpn + "\t" + d + "\t" + error);
+            if (error < .01)
+            {
+                System.out.println("Convergence");
+                break;
+            }
+            xn = xn - (fxn/fxpn);
+        }
+    }
+
+    public static void newtonRaphFunc2(double x)
+    {
+        //x + 10 - xcosh(50/x)
+        //(50sinh(50/x))/x -cosh(50/x) + 1
+        double xn = x;
+        double fxn = 0;
+        double fxpn = 0;
+        double d = 0;
+        double error = 0;
+        for (int i = 0; i < 100; i++)
+        {
+            fxn = xn + 10 - (xn * Math.cosh(50/xn));
+            fxpn = ((50*Math.sinh(50/xn))/xn) - Math.cosh(50/xn) + 1;
+            d = fxn/fxpn;
+            error = Math.abs(d);
+            System.out.println("n\txn\tf(xn)\tf'(xn)\td\txn+1\terr.");
+            System.out.println(i + "\t" + xn + "\t" + fxn + "\t" + fxpn + "\t" + d + "\t" + error);
+            if (error < .01)
+            {
+                System.out.println("Convergence");
+                break;
+            }
+            xn = xn - (fxn/fxpn);
+        }
+    }
+
     public static void main(String[] args)
     {
         Scanner scan = new Scanner(System.in);
         // bisectionFunc1(0, 1);
         // bisectionFunc2(120, 130);
         // falseFunc1(0, 1);
-        falseFunc2(120, 130);
+        // falseFunc2(120, 130);
+        // newtonRaphFunc1(0);
+        newtonRaphFunc2(120);
         scan.close();
     }
 }
