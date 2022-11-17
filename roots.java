@@ -88,7 +88,7 @@ public class roots
         for (int i = 0; i < 100; i++)
         {
             c = ((b * fa) - (a * fb))/(fa - fb);
-            error = (c - cn)/cn;
+            error = (c - cn)/c;
             fc = (2 * Math.pow(c, 3)) - (11.7 * Math.pow(c, 2)) + (17.7 * c) - 5;
             System.out.println(i + "\t" + a + "\t" + fa + "\t" + b + "\t" + fb + "\t" + c + "\t" + fc + "\t" + error);
             if (Math.abs(error) < .01)
@@ -125,7 +125,7 @@ public class roots
         for (int i = 0; i < 100; i++)
         {
             c = ((b * fa) - (a * fb))/(fa - fb);
-            error = (c - cn)/cn;
+            error = (c - cn)/c;
             fc = c + 10 - (c * (Math.cosh(50/c)));  
             System.out.println(i + "\t" + a + "\t" + fa + "\t" + b + "\t" + fb + "\t" + c + "\t" + fc + "\t" + error);
             if (Math.abs(error) < .01)
