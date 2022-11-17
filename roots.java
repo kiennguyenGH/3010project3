@@ -126,7 +126,7 @@ public class roots
         {
             c = ((b * fa) - (a * fb))/(fa - fb);
             error = (c - cn)/cn;
-            fc = c + 10 - (c * (Math.cosh(50/c)));
+            fc = c + 10 - (c * (Math.cosh(50/c)));  
             System.out.println(i + "\t" + a + "\t" + fa + "\t" + b + "\t" + fb + "\t" + c + "\t" + fc + "\t" + error);
             if (Math.abs(error) < .01)
             {
@@ -151,7 +151,7 @@ public class roots
         Scanner scan = new Scanner(System.in);
         // bisectionFunc1(0, 1);
         // bisectionFunc2(120, 130);
-        falseFunc1(0, 1);
+        // falseFunc1(0, 1);
         falseFunc2(120, 130);
         scan.close();
     }
