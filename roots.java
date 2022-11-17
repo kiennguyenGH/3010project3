@@ -303,7 +303,7 @@ public class roots
         bisectionFunc2(120, 130);
         falseFunc1(0, 1);
         falseFunc1(1, 2);
-        falseFunc1(2, 4);
+        falseFunc1(3, 4);
         falseFunc2(120, 130);
         newtonRaphFunc1(0);
         newtonRaphFunc1(2);
