@@ -297,22 +297,22 @@ public class roots
     public static void main(String[] args)
     {
         Scanner scan = new Scanner(System.in);
-        // bisectionFunc1(0, 1);
-        // bisectionFunc1(1, 2);
-        // bisectionFunc1(2, 4);
-        // bisectionFunc2(120, 130);
-        // falseFunc1(0, 1);
-        // falseFunc1(1, 2);
-        // falseFunc1(2, 4);
-        // falseFunc2(120, 130);
-        // newtonRaphFunc1(0);
-        // newtonRaphFunc1(2);
-        // newtonRaphFunc1(3);
-        // newtonRaphFunc2(120);
-        // secantFunc1(0, 1);
-        // secantFunc1(1, 2);
+        bisectionFunc1(0, 1);
+        bisectionFunc1(1, 2);
+        bisectionFunc1(2, 4);
+        bisectionFunc2(120, 130);
+        falseFunc1(0, 1);
+        falseFunc1(1, 2);
+        falseFunc1(2, 4);
+        falseFunc2(120, 130);
+        newtonRaphFunc1(0);
+        newtonRaphFunc1(2);
+        newtonRaphFunc1(3);
+        newtonRaphFunc2(120);
+        secantFunc1(0, 1);
+        secantFunc1(1, 2);
         secantFunc1(3, 4);
-        // secantFunc2(120,130);
+        secantFunc2(120,130);
         scan.close();
     }
 }
