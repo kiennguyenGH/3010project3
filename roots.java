@@ -156,20 +156,20 @@ public class roots
         double fxpn = 0;
         double d = 0;
         double error = 0;
+        System.out.println("n\txn\tf(xn)\tf'(xn)\td\terr.");
         for (int i = 0; i < 100; i++)
         {
             fxn = (2*Math.pow(xn, 3)) - (11.7*Math.pow(xn,2)) + (17.7 * xn) - 5;
             fxpn = (6*Math.pow(xn,2)) - (23.4 * xn) + 17.7;
             d = fxn/fxpn;
             error = Math.abs(d);
-            System.out.println("n\txn\tf(xn)\tf'(xn)\td\txn+1\terr.");
             System.out.println(i + "\t" + xn + "\t" + fxn + "\t" + fxpn + "\t" + d + "\t" + error);
             if (error < .01)
             {
                 System.out.println("Convergence");
                 break;
             }
-            xn = xn - (fxn/fxpn);
+            xn = xn - d;
         }
     }
 
@@ -182,20 +182,114 @@ public class roots
         double fxpn = 0;
         double d = 0;
         double error = 0;
+        System.out.println("n\txn\tf(xn)\tf'(xn)\td\terr.");
         for (int i = 0; i < 100; i++)
         {
             fxn = xn + 10 - (xn * Math.cosh(50/xn));
             fxpn = ((50*Math.sinh(50/xn))/xn) - Math.cosh(50/xn) + 1;
             d = fxn/fxpn;
             error = Math.abs(d);
-            System.out.println("n\txn\tf(xn)\tf'(xn)\td\txn+1\terr.");
             System.out.println(i + "\t" + xn + "\t" + fxn + "\t" + fxpn + "\t" + d + "\t" + error);
             if (error < .01)
             {
                 System.out.println("Convergence");
                 break;
             }
-            xn = xn - (fxn/fxpn);
+            xn = xn - d;
+        }
+    }
+
+    public static void secantFunc1(double x1, double x2)
+    {
+        //2x^3 - 11.7x^2 + 17.7x - 5
+        double a = x1;
+        double b = x2;
+        double fa = (2*Math.pow(a, 3)) - (11.7*Math.pow(a,2)) + (17.7 * a) - 5;
+        double fb = (2*Math.pow(b, 3)) - (11.7*Math.pow(b,2)) + (17.7 * b) - 5;
+        double d = 0;
+        if (Math.abs(fa) > Math.abs(fb))
+        {
+            double temp = a;
+            a = b;
+            b = temp;
+            temp = fa;
+            fa = fb;
+            fb = temp;
+        }
+        System.out.println("n\tx\tf(x)\terr.");
+        System.out.println(0 + "\t" + a + "\t" + fa);
+        System.out.println(1 + "\t" + b + "\t" + fb);
+        for (int i = 2; i < 100; i++)
+        {
+            if (Math.abs(fa) > Math.abs(fb))
+            {
+                double temp = a;
+                a = b;
+                b = temp;
+                temp = fa;
+                fa = fb;
+                fb = temp;
+            } 
+            d = (b-a)/(fb-fa);
+            b = a;
+            fb = fa;
+            d *= fa;
+            System.out.println(i + "\t" + a + "\t" + fa + "\t" + d);
+            if (Math.abs(d) < .01)
+            {
+                System.out.println("Convergence");
+                break;
+            }
+            a -= d;
+            fa = (2*Math.pow(a, 3)) - (11.7*Math.pow(a,2)) + (17.7 * a) - 5;
+
+        }
+    }
+
+    public static void secantFunc2(double x1, double x2)
+    {
+        //x + 10 - xcosh(50/x)
+        double a = x1;
+        double b = x2;
+        double fa =  a + 10 - (a*Math.cosh(50/a));
+        double fb = b + 10 - (b*Math.cosh(50/b));
+        double d = 0;
+        if (Math.abs(fa) > Math.abs(fb))
+        {
+            double temp = a;
+            a = b;
+            b = temp;
+            temp = fa;
+            fa = fb;
+            fb = temp;
+        }
+        System.out.println("n\tx\tf(x)\terr.");
+        System.out.println(0 + "\t" + a + "\t" + fa);
+        System.out.println(1 + "\t" + b + "\t" + fb);
+        for (int i = 2; i < 100; i++)
+        {
+            if (Math.abs(fa) > Math.abs(fb))
+            {
+                double temp = a;
+                a = b;
+                b = temp;
+                temp = fa;
+                fa = fb;
+                fb = temp;
+            } 
+            d = (b-a)/(fb-fa);
+            b = a;
+            fb = fa;
+            d *= fa;
+            System.out.println(i + "\t" + a + "\t" + fa + "\t" + d);
+            if (Math.abs(d) < .01)
+            {
+                System.out.println("Convergence");
+                break;
+            }
+            a -= d;
+            fa =  a + 10 - (a*Math.cosh(50/a));
+
         }
     }
 
@@ -207,7 +301,9 @@ public class roots
         // falseFunc1(0, 1);
         // falseFunc2(120, 130);
         // newtonRaphFunc1(0);
-        newtonRaphFunc2(120);
+        // newtonRaphFunc2(120);
+        // secantFunc1(0, 0.2);
+        secantFunc2(120,121);
         scan.close();
     }
 }
